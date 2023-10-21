@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PromoController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,6 +57,16 @@ Route::middleware('splade')->group(function () {
         Route::get('/{user}/edit', [UserController::class, 'edit'])->name('edit');
         Route::put('/{user}/update', [UserController::class, 'update'])->name('update');
         Route::delete('/{user}/destroy', [UserController::class, 'destroy'])->name('destroy');
+    });
+
+    // Manage Shop
+    Route::middleware(['auth', 'can:manage-shop'])->prefix('/shops')->name('shop.')->group(function () {
+        Route::get('/', [ShopController::class, 'index'])->name('index');
+        Route::get('/create', [ShopController::class, 'create'])->name('create');
+        Route::post('/store', [ShopController::class, 'store'])->name('store');
+        Route::get('/{shop}/edit', [ShopController::class, 'edit'])->name('edit');
+        Route::put('/{shop}/update', [ShopController::class, 'update'])->name('update');
+        Route::delete('/{shop}/destroy', [ShopController::class, 'destroy'])->name('destroy');
     });
     require __DIR__ . '/auth.php';
 });

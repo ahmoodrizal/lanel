@@ -21,6 +21,11 @@
                                 {{ __('User') }}
                             </x-nav-link>
                         @endcan
+                        @can('manage-shop')
+                            <x-nav-link :href="route('shop.index')" :active="request()->routeIs('shop*')">
+                                {{ __('Shop') }}
+                            </x-nav-link>
+                        @endcan
                     </div>
                 </div>
 
