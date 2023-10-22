@@ -96,7 +96,7 @@ class LaundryController extends Controller
             'status' => ['nullable']
         ]);
 
-        $price = auth()->user()->shop->promo == null ? auth()->user()->shop->price : auth()->user()->shop->promo->new_price;
+        $price = auth()->user()->shop->price;
 
         $data['pickup_address'] = $request['with_pickup'] ? $request['address'] : null;
         $data['delivery_address'] = $request['with_delivery'] ? $request['address'] : null;
