@@ -68,5 +68,15 @@ Route::middleware('splade')->group(function () {
         Route::put('/{shop}/update', [ShopController::class, 'update'])->name('update');
         Route::delete('/{shop}/destroy', [ShopController::class, 'destroy'])->name('destroy');
     });
+
+    // Manage promo
+    Route::middleware(['auth', 'can:manage-promo'])->prefix('/promo')->name('promo.')->group(function () {
+        Route::get('/', [PromoController::class, 'index'])->name('index');
+        Route::get('/create', [PromoController::class, 'create'])->name('create');
+        Route::post('/store', [PromoController::class, 'store'])->name('store');
+        Route::get('/{promo}/edit', [PromoController::class, 'edit'])->name('edit');
+        Route::put('/{promo}/update', [PromoController::class, 'update'])->name('update');
+        Route::delete('/{promo}/destroy', [PromoController::class, 'destroy'])->name('destroy');
+    });
     require __DIR__ . '/auth.php';
 });

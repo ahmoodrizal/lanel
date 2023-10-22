@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Shop::class);
     }
+
+    public function promo()
+    {
+        return $this->hasOneThrough(Promo::class, Shop::class);
+    }
 }

@@ -9,6 +9,8 @@ class Shop extends Model
 {
     use HasFactory;
 
+    protected $with = ['promo'];
+
     protected $fillable = [
         'user_id',
         'image',
@@ -26,5 +28,10 @@ class Shop extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function promo()
+    {
+        return $this->hasOne(Promo::class);
     }
 }

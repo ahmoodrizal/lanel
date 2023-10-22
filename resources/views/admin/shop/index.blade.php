@@ -71,6 +71,12 @@
                                             Rp.{{ Auth::user()->shop->price }}
                                             / kg
                                         </dd>
+                                        @if (Auth::user()->shop?->promo != null)
+                                            <dd class="pl-3 font-semibold text-orange-600">Promo Price :
+                                                Rp.{{ Auth::user()->shop->promo->new_price }}
+                                                / kg
+                                            </dd>
+                                        @endif
                                         <dd class="pl-3 font-semibold">Current Rate : {{ Auth::user()->shop->rate }}
                                             / 5
                                         </dd>

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Shop;
 use App\Models\Promo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use ProtoneMedia\Splade\Facades\Splade;
 
 class PromoController extends Controller
 {
@@ -12,8 +16,7 @@ class PromoController extends Controller
      */
     public function index()
     {
-        $promos = Promo::all();
-        return view('admin.promo.index', compact('promos'));
+        return view('admin.promo.index');
     }
 
     /**
@@ -21,7 +24,12 @@ class PromoController extends Controller
      */
     public function create()
     {
-        //
+        if (auth()->user()->promo == null) {
+            Splade::toast('Create a shop first')->warning()->autoDismiss(3);
+            return redirect(route('shop.index'));
+        }
+
+        return view('admin.promo.create');
     }
 
     /**
@@ -29,7 +37,29 @@ class PromoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'new_price' => ['required'],
+            'description' => ['required'],
+            'image' => ['nullable', 'image', 'max:2048']
+        ]);
+
+        $shop = Shop::where('user_id', auth()->user()->id)->first();
+
+        $data['shop_id'] = $shop->id;
+        $data['old_price'] = $shop->price;
+
+        if ($request->hasFile('image')) {
+            // upload image
+            $image = $request->file('image');
+            $image->storeAs('public/promo', $image->hashName());
+            $data['image'] = $image->hashName();
+        }
+
+        Promo::create($data);
+
+        Splade::toast('Promo create successfully')->autoDismiss(3);
+
+        return redirect(route('promo.index'));
     }
 
     /**
@@ -45,7 +75,7 @@ class PromoController extends Controller
      */
     public function edit(Promo $promo)
     {
-        //
+        return view('admin.promo.edit', compact('promo'));
     }
 
     /**
@@ -53,7 +83,26 @@ class PromoController extends Controller
      */
     public function update(Request $request, Promo $promo)
     {
-        //
+        $data = $request->validate([
+            'new_price' => ['required'],
+            'description' => ['required'],
+            'image' => ['nullable', 'image', 'max:2048']
+        ]);
+
+        if ($request->hasFile('image')) {
+            // upload image
+            $image = $request->file('image');
+            $image->storeAs('public/promo', $image->hashName());
+            // delete old image
+            Storage::delete('public/promo/' . $promo->image);
+            $data['image'] = $image->hashName();
+        }
+
+        $promo->update($data);
+
+        Splade::toast('Promo update successfully')->autoDismiss(3);
+
+        return redirect(route('promo.index'));
     }
 
     /**

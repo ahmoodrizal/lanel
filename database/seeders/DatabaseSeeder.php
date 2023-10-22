@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         // Create Permissions
         $manageUser = Permission::create(['name' => 'manage-user']);
         $manageShop = Permission::create(['name' => 'manage-shop'])->assignRole($roleManager);
-        $managePromo = Permission::create(['name' => 'manage-promo']);
+        $managePromo = Permission::create(['name' => 'manage-promo'])->assignRole($roleManager);
 
         // Create Dummy User
         $admin =  User::create([

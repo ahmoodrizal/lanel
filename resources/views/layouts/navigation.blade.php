@@ -16,14 +16,19 @@
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
-                        @can('manage-promo')
+                        @can('manage-user')
                             <x-nav-link :href="route('user.index')" :active="request()->routeIs('user*')">
-                                {{ __('User') }}
+                                {{ __('Users') }}
                             </x-nav-link>
                         @endcan
                         @can('manage-shop')
                             <x-nav-link :href="route('shop.index')" :active="request()->routeIs('shop*')">
                                 {{ __('Shop') }}
+                            </x-nav-link>
+                        @endcan
+                        @can('manage-promo')
+                            <x-nav-link :href="route('promo.index')" :active="request()->routeIs('promo*')">
+                                {{ __('Promo') }}
                             </x-nav-link>
                         @endcan
                     </div>
