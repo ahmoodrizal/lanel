@@ -16,10 +16,17 @@
                             Manage Promo
                         </h3>
                         @if (Auth::user()->promo != null)
-                            <Link modal href="{{ route('promo.edit', Auth::user()->promo) }}"
-                                class="px-3 py-2 font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600">
-                            Edit Promo
-                            </Link>
+                            <div class="gap-x-3">
+                                <Link modal href="{{ route('promo.edit', Auth::user()->promo) }}"
+                                    class="px-3 py-2 mr-4 font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600">
+                                Edit Promo
+                                </Link>
+                                <Link href="{{ route('promo.destroy', Auth::user()->promo) }}" method="DELETE"
+                                    class="px-3 py-2 font-medium text-white bg-red-500 rounded-md hover:bg-red-600"
+                                    confirm="Delete promo data..." confirm-text="Are you sure?" confirm-button="Yes"
+                                    cancel-button="No">Delete
+                                </Link>
+                            </div>
                         @endif
                     </div>
                     @if (Auth::user()->promo == null)
@@ -64,8 +71,11 @@
                                 <h3 class="mb-3 font-bold">
                                     Promo Banner
                                 </h3>
-                                <img width="300" height="300" class="rounded-md"
-                                    src="{{ asset('/storage/promo/' . Auth::user()->promo->image) }}" alt="">
+                                @if (Auth::user()->promo->image != null)
+                                    <img width="300" height="300" class="rounded-md"
+                                        src="{{ asset('/storage/promo/' . Auth::user()->promo->image) }}"
+                                        alt="">
+                                @endif
                             </span>
                             </dl>
                         </div>

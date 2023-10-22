@@ -24,7 +24,7 @@ class PromoController extends Controller
      */
     public function create()
     {
-        if (auth()->user()->promo == null) {
+        if (auth()->user()->shop == null) {
             Splade::toast('Create a shop first')->warning()->autoDismiss(3);
             return redirect(route('shop.index'));
         }
@@ -89,6 +89,8 @@ class PromoController extends Controller
             'image' => ['nullable', 'image', 'max:2048']
         ]);
 
+        $data['image'] = $promo->image;
+
         if ($request->hasFile('image')) {
             // upload image
             $image = $request->file('image');
@@ -100,7 +102,7 @@ class PromoController extends Controller
 
         $promo->update($data);
 
-        Splade::toast('Promo update successfully')->autoDismiss(3);
+        Splade::toast('Promo updated successfully')->autoDismiss(3);
 
         return redirect(route('promo.index'));
     }
@@ -110,6 +112,11 @@ class PromoController extends Controller
      */
     public function destroy(Promo $promo)
     {
-        //
+        $promo->delete();
+        Storage::delete('public/promo/' . $promo->image);
+
+        Splade::toast('Promo deleted successfully')->autoDismiss(3);
+
+        return redirect(route('promo.index'));
     }
 }

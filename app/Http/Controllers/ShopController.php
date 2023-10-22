@@ -100,6 +100,8 @@ class ShopController extends Controller
             'image' => ['nullable', 'image', 'max:2048']
         ]);
 
+        $data['image'] = $shop->image;
+
         if ($request->hasFile('image')) {
             // upload image
             $image = $request->file('image');
