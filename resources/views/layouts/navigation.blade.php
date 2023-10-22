@@ -31,6 +31,9 @@
                                 {{ __('Promo') }}
                             </x-nav-link>
                         @endcan
+                        <x-nav-link :href="route('laundry.index')" :active="request()->routeIs('laundry*')">
+                            {{ __('My Laundry') }}
+                        </x-nav-link>
                     </div>
                 </div>
 

@@ -34,4 +34,9 @@ class Shop extends Model
     {
         return $this->hasOne(Promo::class);
     }
+
+    public function laundries()
+    {
+        return $this->hasMany(Laundry::class);
+    }
 }

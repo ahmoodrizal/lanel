@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasOneThrough(Promo::class, Shop::class);
     }
+
+    public function laundries()
+    {
+        return $this->hasManyThrough(Laundry::class, Shop::class);
+    }
 }

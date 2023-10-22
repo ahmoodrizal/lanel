@@ -37,7 +37,7 @@
                     @endif
                     @if (Auth::user()->shop != null)
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-6">
-                            <span class="sm:col-span-2">
+                            <span class="sm:col-span-3">
                                 <h3 class="mb-5 font-bold">
                                     Shop Banner
                                 </h3>
@@ -49,7 +49,7 @@
                                     </div>
                                 @endif
                             </span>
-                            <span class="sm:col-span-2">
+                            <span class="sm:col-span-3">
                                 <dl>
                                     <div class="mb-3">
                                         <dt class="font-bold">Shop Name</dt>
@@ -90,11 +90,6 @@
                                         </dd>
                                     </div>
                                 </dl>
-                            </span>
-                            <span class="sm:col-span-2">
-                                <h3 class="mb-5 font-bold">
-                                    Latest Laundries
-                                </h3>
                             </span>
                         </div>
                     @endif

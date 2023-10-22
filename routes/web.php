@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaundryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\ShopController;
@@ -78,5 +79,23 @@ Route::middleware('splade')->group(function () {
         Route::put('/{promo}/update', [PromoController::class, 'update'])->name('update');
         Route::delete('/{promo}/destroy', [PromoController::class, 'destroy'])->name('destroy');
     });
+
+    // Manage Laundry
+    Route::middleware(['auth', 'can:manage-laundries'])->prefix('/laundries')->name('laundry.')->group(function () {
+        Route::get('/create', [LaundryController::class, 'create'])->name('create');
+        Route::post('/store', [LaundryController::class, 'store'])->name('store');
+        Route::get('/{laundry}/edit', [LaundryController::class, 'edit'])->name('edit');
+        Route::put('/{laundry}/update', [LaundryController::class, 'update'])->name('update');
+        Route::delete('/{laundry}/destroy', [LaundryController::class, 'destroy'])->name('destroy');
+    });
+
+    // Public with AUTH
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/laundries', [LaundryController::class, 'index'])->name('laundry.index'); // user view my laundry
+        Route::get('/laundry/order', [LaundryController::class, 'order'])->name('laundry.order'); // user claim an order
+        Route::put('/laundry/claim', [LaundryController::class, 'claim'])->name('laundry.claim'); // 
+    });
+
+
     require __DIR__ . '/auth.php';
 });
