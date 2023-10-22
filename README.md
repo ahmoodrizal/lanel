@@ -9,7 +9,7 @@
 
 ## About Laravel
 
-Laundry Admin Panel
+Laundry Admin Panel untuk course BWA Full Stack FLutter Laravel: Laundry Market App
 
 -   [x] Laravel Splade
 -   [x] Roles and Permissions ['Admin', 'Manager', 'Customer']
