@@ -46,7 +46,7 @@ class ShopController extends Controller
         if ($request->hasFile('image')) {
             // upload image
             $image = $request->file('image');
-            $image->storeAs('public/shops', $image->hashName());
+            $image->storeAs('public/shop', $image->hashName());
 
             $data['image'] = $image->hashName();
         }
@@ -105,9 +105,9 @@ class ShopController extends Controller
         if ($request->hasFile('image')) {
             // upload image
             $image = $request->file('image');
-            $image->storeAs('public/shops', $image->hashName());
+            $image->storeAs('public/shop', $image->hashName());
             // delete old image
-            Storage::delete('public/shops/' . $shop->image);
+            Storage::delete('public/shop/' . $shop->image);
             $data['image'] = $image->hashName();
         }
 

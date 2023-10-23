@@ -44,7 +44,7 @@
                                 @if (Auth::user()->shop->image != null)
                                     <div class="">
                                         <img width="300" height="300" class="rounded-md"
-                                            src="{{ asset('/storage/shops/' . Auth::user()->shop->image) }}"
+                                            src="{{ asset('/storage/shop/' . Auth::user()->shop->image) }}"
                                             alt="">
                                     </div>
                                 @endif
