@@ -25,12 +25,12 @@ class ShopController extends Controller
 
         if (count($shops) > 0) {
             return response()->json([
-                'data' => $shops,
+                'data' => $shops->makeHidden('user_id'),
             ], 200);
         } else {
             return response()->json([
                 'message' => 'not found',
-                'data' => $shops,
+                'data' => $shops->makeHidden('user_id'),
             ], 404);
         }
     }
@@ -43,12 +43,12 @@ class ShopController extends Controller
 
         if (count($shops) > 0) {
             return response()->json([
-                'data' => $shops,
+                'data' => $shops->makeHidden('user_id'),
             ], 200);
         } else {
             return response()->json([
                 'message' => 'not found',
-                'data' => $shops,
+                'data' => $shops->makeHidden('user_id'),
             ], 404);
         }
     }

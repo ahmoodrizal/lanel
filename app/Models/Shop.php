@@ -9,8 +9,6 @@ class Shop extends Model
 {
     use HasFactory;
 
-    protected $with = ['promo'];
-
     protected $fillable = [
         'user_id',
         'image',

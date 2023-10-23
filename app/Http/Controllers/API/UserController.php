@@ -28,13 +28,14 @@ class UserController extends Controller
         ]);
 
         $user = User::create([
+            'name' => $request->username,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
         return response()->json([
-            'data' => $user,
+            'data' => $user->makeHidden('name'),
         ], 201);
     }
 
@@ -46,7 +47,7 @@ class UserController extends Controller
             ], 401);
         }
 
-        $user = User::where('email', $request->email)->firstOrFail();
+        $user = User::without('roles')->where('email', $request->email)->firstOrFail();
 
         $token = $user->createToken('auth_token')->plainTextToken;
 

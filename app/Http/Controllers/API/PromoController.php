@@ -10,7 +10,8 @@ class PromoController extends Controller
 {
     function readAll()
     {
-        $promos = Promo::with('shop')->get();
+        $promos = Promo::with('shop')
+            ->get();
 
         return response()->json([
             'data' => $promos,
