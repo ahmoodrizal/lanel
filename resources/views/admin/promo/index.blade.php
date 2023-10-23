@@ -72,7 +72,7 @@
                                     Promo Banner
                                 </h3>
                                 @if (Auth::user()->promo->image != null)
-                                    <img width="300" height="300" class="rounded-md"
+                                    <img class="object-cover w-auto h-auto rounded-md shadow-md max-h-72"
                                         src="{{ asset('/storage/promo/' . Auth::user()->promo->image) }}"
                                         alt="">
                                 @endif

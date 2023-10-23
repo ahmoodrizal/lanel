@@ -43,7 +43,7 @@
                                 </h3>
                                 @if (Auth::user()->shop->image != null)
                                     <div class="">
-                                        <img width="300" height="300" class="rounded-md"
+                                        <img class="object-cover w-auto h-auto rounded-md shadow-md max-h-72"
                                             src="{{ asset('/storage/shop/' . Auth::user()->shop->image) }}"
                                             alt="">
                                     </div>

@@ -14,7 +14,7 @@
                     </h3>
                     <x-splade-form :action="route('promo.store')" class="p-4 mb-8 space-y-4 bg-white rounded-md">
                         <div class="grid grid-cols-1 sm:gap-6 sm:grid-cols-6 gap-y-2">
-                            <span class="sm:col-span-3">di
+                            <span class="sm:col-span-3">
                                 <x-splade-input name="new_price" label="New Price" />
                             </span>
                             <span class="sm:col-span-3">

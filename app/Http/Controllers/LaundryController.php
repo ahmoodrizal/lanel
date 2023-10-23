@@ -74,10 +74,7 @@ class LaundryController extends Controller
      */
     public function edit(Laundry $laundry)
     {
-        if ($laundry->with_pickup) {
-            $laundry['address'] = $laundry->pickup_address;
-        }
-        $laundry['address'] = $laundry->delivery_address;
+        $laundry['address'] = $laundry->with_delivery ? $laundry->delivery_address : $laundry->pickup_address;
 
         return view('admin.laundry.edit', compact('laundry'));
     }
