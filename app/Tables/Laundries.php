@@ -41,8 +41,10 @@ class Laundries extends AbstractTable
     public function for()
     {
         return QueryBuilder::for(
-            Laundry::whereShopId(auth()->user()->shop?->id)
+            Laundry::whereShopId(auth()
+                ->user()->shop?->id)
                 ->orWhere('user_id', auth()->user()->id)
+                ->with('user')
         )
             ->defaultSort('id');
     }

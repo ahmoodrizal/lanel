@@ -37,11 +37,18 @@ class PromoController extends Controller
      */
     public function store(Request $request)
     {
+        $old_price = Auth::user()->shop->price;
+
         $data = $request->validate([
             'new_price' => ['required'],
             'description' => ['required'],
             'image' => ['nullable', 'image', 'max:2048']
         ]);
+
+        if ($request['new_price'] >= $old_price) {
+            Splade::toast('Promo price should be cheaper')->warning()->autoDismiss(3);
+            return redirect(route('promo.create'));
+        }
 
         $shop = Shop::where('user_id', auth()->user()->id)->first();
 
@@ -84,7 +91,7 @@ class PromoController extends Controller
     public function update(Request $request, Promo $promo)
     {
         $data = $request->validate([
-            'new_price' => ['required'],
+            'new_price' => ['required', 'lt:old_price'],
             'description' => ['required'],
             'image' => ['nullable', 'image', 'max:2048']
         ]);

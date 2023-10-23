@@ -11,6 +11,7 @@
             </h3>
             <x-splade-form :default="$promo" :action="route('promo.update', $promo)" method="put" class="p-4 space-y-4 bg-white rounded-md">
                 <div class="grid grid-cols-1 sm:gap-6 sm:grid-cols-6 gap-y-2">
+                    <x-splade-input name="old_price" type="hidden" />
                     <span class="sm:col-span-3">
                         <x-splade-input name="new_price" label="New Price" />
                     </span>
