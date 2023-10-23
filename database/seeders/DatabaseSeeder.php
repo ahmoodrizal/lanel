@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
         // Create Role
         $roleAdmin = Role::create(['name' => 'admin']);
         $roleManager = Role::create(['name' => 'manager']);
@@ -50,8 +49,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'gaeul@ive.co.kr',
             'password' => Hash::make('melon123'),
         ]);
-
-        User::factory(7)->create();
 
         // Asssign Role to User
         $admin->assignRole($roleAdmin);

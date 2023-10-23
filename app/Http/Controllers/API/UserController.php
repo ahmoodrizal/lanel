@@ -34,6 +34,8 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $user->assignRole('customer');
+
         return response()->json([
             'data' => $user->makeHidden('name'),
         ], 201);
