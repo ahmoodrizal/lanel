@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use ProtoneMedia\Splade\Facades\Splade;
+use ProtoneMedia\Splade\FileUploads\ExistingFile;
 
 class PromoController extends Controller
 {
@@ -82,6 +83,8 @@ class PromoController extends Controller
      */
     public function edit(Promo $promo)
     {
+        $promo['image'] = ExistingFile::fromDisk('public')->get('promo/' . $promo->image);
+
         return view('admin.promo.edit', compact('promo'));
     }
 

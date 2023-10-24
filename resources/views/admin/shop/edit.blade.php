@@ -39,7 +39,7 @@
                                 <x-splade-checkbox name="pickup" value="1" label="Pickup Service" />
                             </span>
                             <span class="sm:col-span-4">
-                                <x-splade-file name="image" label="Upload Image" preview />
+                                <x-splade-file name="image" label="Upload Image" filepond preview />
                             </span>
                         </div>
                         <x-splade-submit label="Save" />

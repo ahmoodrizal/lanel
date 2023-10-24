@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use ProtoneMedia\Splade\Facades\Splade;
 use Illuminate\Support\Facades\Storage;
+use ProtoneMedia\Splade\Facades\Splade;
+use ProtoneMedia\Splade\FileUploads\ExistingFile;
 
 class ShopController extends Controller
 {
@@ -75,6 +76,8 @@ class ShopController extends Controller
         if (auth()->user()->id != $shop->user_id) {
             abort(403);
         }
+
+        $shop['image'] = ExistingFile::fromDisk('public')->get('shop/' . $shop->image);
 
         return view('admin.shop.edit', compact('shop'));
     }

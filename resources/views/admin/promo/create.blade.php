@@ -21,7 +21,7 @@
                                 <x-splade-input name="description" label="Description" />
                             </span>
                             <span class="sm:col-span-4">
-                                <x-splade-file name="image" label="Upload Image" preview />
+                                <x-splade-file name="image" label="Upload Image" filepond preview />
                             </span>
                         </div>
                         <x-splade-submit label="Create" />
