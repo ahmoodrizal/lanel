@@ -39,7 +39,7 @@ class LaundryController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'weight' => ['required'],
+            'weight' => ['required', 'numeric'],
             'description' => ['required'],
             'address' => ['required'],
             'with_delivery' => ['nullable'],
@@ -85,7 +85,7 @@ class LaundryController extends Controller
     public function update(Request $request, Laundry $laundry)
     {
         $data = $request->validate([
-            'weight' => ['nullable'],
+            'weight' => ['nullable', 'numeric'],
             'description' => ['nullable'],
             'address' => ['nullable'],
             'with_delivery' => ['nullable'],
