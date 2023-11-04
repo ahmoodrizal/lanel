@@ -20,6 +20,7 @@ Laundry Admin Panel untuk course BWA Full Stack FLutter Laravel: Laundry Market 
 -   [x] API
 
 #### Installing
+Lakukan sedikit perubahan pada aplikasi flutter seperti instruksi berikut:
 
 Ubah 2 field pada `laundry_model.dart` seperti berikut:
 
