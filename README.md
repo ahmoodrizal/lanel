@@ -21,10 +21,26 @@ Laundry Admin Panel untuk course BWA Full Stack FLutter Laravel: Laundry Market 
 
 #### Installing
 
-`Totem` requires Laravel v5.4 and above, please refer to the above table for compatability. Use composer to install totem to your Laravel project
+Ubah 2 field pada `laundry_model.dart` seperti berikut:
 
+```dart
+class LaundryModel {
+  String? pickupAddress;
+  String? deliveryAddress;
+}
+
+ LaundryModel({
+    this.pickupAddress,
+    this.deliveryAddress,
+  });
 ```
-composer require studio/laravel-totem
+
+Ubah 2 line code pada `detail_laundry_view.dart` seperti berikut:
+
+```dart
+if (laundry.withPickup) itemDescription(laundry.pickupAddress ?? 'Address Not Found'),
+if (laundry.withDelivery) itemDescription(laundry.deliveryAddress ?? 'Address Not Found'),
+
 ```
 
 ## License
