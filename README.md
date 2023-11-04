@@ -25,6 +25,7 @@ Laundry Admin Panel untuk course BWA Full Stack FLutter Laravel: Laundry Market 
 
 ```
 composer require studio/laravel-totem
+```
 
 ## License
 
