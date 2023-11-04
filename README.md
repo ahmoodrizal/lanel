@@ -19,6 +19,13 @@ Laundry Admin Panel untuk course BWA Full Stack FLutter Laravel: Laundry Market 
 -   [x] Laundry Dashboard Management
 -   [x] API
 
+#### Installing
+
+`Totem` requires Laravel v5.4 and above, please refer to the above table for compatability. Use composer to install totem to your Laravel project
+
+```
+composer require studio/laravel-totem
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
