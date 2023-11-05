@@ -19,6 +19,31 @@ Laundry Admin Panel untuk course BWA Full Stack FLutter Laravel: Laundry Market 
 -   [x] Laundry Dashboard Management
 -   [x] API
 
+#### Installing
+Lakukan sedikit perubahan pada aplikasi flutter seperti instruksi berikut:
+
+Ubah 2 field pada `laundry_model.dart` seperti berikut:
+
+```dart
+class LaundryModel {
+  String? pickupAddress;
+  String? deliveryAddress;
+}
+
+ LaundryModel({
+    this.pickupAddress,
+    this.deliveryAddress,
+  });
+```
+
+Ubah 2 line code pada `detail_laundry_view.dart` seperti berikut:
+
+```dart
+if (laundry.withPickup) itemDescription(laundry.pickupAddress ?? 'Address Not Found'),
+if (laundry.withDelivery) itemDescription(laundry.deliveryAddress ?? 'Address Not Found'),
+
+```
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
