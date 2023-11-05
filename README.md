@@ -19,6 +19,16 @@ Laundry Admin Panel untuk course BWA Full Stack FLutter Laravel: Laundry Market 
 -   [x] Laundry Dashboard Management
 -   [x] API
 
+## User Example
+email       : admin1994@lanel.co.id ( admin )
+password    : password       
+
+email       : johndoe@lanel.co.id ( manager )
+password    : password
+
+email       : mark@lanel.co.id ( customer )
+password    : password        
+
 #### Installing
 Lakukan sedikit perubahan pada aplikasi flutter seperti instruksi berikut:
 
