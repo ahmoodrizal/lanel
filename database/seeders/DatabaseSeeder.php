@@ -30,24 +30,24 @@ class DatabaseSeeder extends Seeder
 
         // Create Dummy User
         $admin =  User::create([
-            'name' => 'Kim Minju',
-            'username' => 'minguri',
-            'email' => 'minguri@izone.co.kr',
-            'password' => Hash::make('melon123'),
+            'name' => 'Admin',
+            'username' => 'admin1994',
+            'email' => 'admin1994@lanel.co.id',
+            'password' => Hash::make('password'),
         ]);
 
         $manager =  User::create([
-            'name' => 'Kang Seulgi',
-            'username' => 'ddeulgi',
-            'email' => 'seulgi@rv.co.kr',
-            'password' => Hash::make('melon123'),
+            'name' => 'John Doe',
+            'username' => 'johndoe',
+            'email' => 'johndoe@lanel.co.id',
+            'password' => Hash::make('password'),
         ]);
 
         $customer =  User::create([
-            'name' => 'Kim Gaeul',
-            'username' => 'gaeulsunbae',
-            'email' => 'gaeul@ive.co.kr',
-            'password' => Hash::make('melon123'),
+            'name' => 'mark',
+            'username' => 'markzux',
+            'email' => 'mark@lanel.co.id',
+            'password' => Hash::make('password'),
         ]);
 
         // Asssign Role to User
